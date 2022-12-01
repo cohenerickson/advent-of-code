@@ -4,7 +4,7 @@ const elves = [];
 
 let stack = [];
 
-let most = 0;
+const totals = [];
 
 input.forEach((amount) => {
   if (amount) {
@@ -21,10 +21,11 @@ elves.forEach((elf) => {
     amount = parseInt(amount);
     total += amount;
   });
-  if (total > most) {
-    most = total;
-    console.log(elf);
-  }
+  totals.push(total);
 });
 
-console.log(most);
+totals.sort((a, b) => a < b ? 1 : a > b ? -1 : 0);
+
+console.log("Part 1:", totals[0]);
+
+console.log("Part 2:", totals.slice(0, 3).reduce((a, b) => a + b));
